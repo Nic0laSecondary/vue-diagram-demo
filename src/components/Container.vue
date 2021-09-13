@@ -103,23 +103,29 @@ export default {
       this.startValue = startArray[0];
 
       //Parse Data
-      let mappedArray = startArray.map(function(elem){
-        return elem*2;
-      })
+      let endData = [];
+      let oldValue = startArray[0];
+      for (let i = 0; i < startArray.length; i++){
+        endData[i] = startArray[i] - oldValue;
+        oldValue = startArray[i];
+      }
 
 
-      this.convertedArray = mappedArray;
+
+      this.convertedArray = endData;
     },
     unConvertArray(){//TODO 2
       let startArray = this.convertedArray;
 
       //Parse Data
-      let mappedArray = startArray.map(function(elem){
-        return elem/2;
-      })
+      let endData = [];
+      let oldValue = this.startValue;
+      for (let i = 0; i < startArray.length; i++){
+        oldValue = oldValue + startArray[i];
+        endData[i] = oldValue;
+      }
 
-
-      this.outputArray = mappedArray;
+      this.outputArray = endData;
     },
     updateChartSeries(){
       this.chartOneSeries = [{
